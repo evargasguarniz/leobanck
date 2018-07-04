@@ -1,0 +1,26 @@
+#graph-grid-settings-form .column-main {
+  width: 100%;
+}
+
+#graph-grid-settings-form .column-side {
+  display: none;
+}
+
+#graph-grid-settings-form #sample_table tbody tr td:nth-child(1), 
+#graph-grid-settings-form #sample_table tbody tr td:nth-child(2) {
+  width: 30%;
+}
+
+#graph-grid-settings-form .graph-grid-title, 
+#graph-grid-settings-form .graph-grid-url{
+  clear: none;
+  float: left;
+  margin: 15px 0 0 0;
+  width: 90% !important;
+
+}
+
+#graph-grid-settings-form #edit-actions, 
+#graph-grid-settings-form .form-layout-default .column-main .form-actions {
+  display: none !important;
+}

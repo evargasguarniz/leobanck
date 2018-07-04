@@ -1,0 +1,90 @@
+/*http://mount.drupalet.com/home-portfolio-1*/
+/*
+* styles generales
+*/
+.header{
+	width: 100%;
+}
+.site-logo{
+	float: left;;
+}
+.site-logo .logo{
+	margin-top: 20px;
+	padding: 0;
+}
+.site-logo .logo img{
+	width: 200px;
+}
+.menu{
+	margin: 0px 20px 0px 0px;
+	padding: 0px;
+	margin-top: 29px;
+}
+.menu .leaf{
+	display: inline-block;
+	list-style-image: none;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+.menu .leaf a {
+	display: inline-block;
+	color: #777777;
+	font-weight: 700;
+	line-height: 24px;
+	margin: 0px 0px 0px 1px;
+	padding: 5px 15px 5px 15px;
+	text-align: center;;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+.menu .leaf a:hover{
+	color: #46a1f0;
+	border-bottom: 3px #46a1f0 solid;
+	transition: all 0.5s ease;
+}
+.menu .leaf .active{
+	border-bottom: 3px #46a1f0 solid;
+}
+
+/*
+* medias query
+*/
+@media screen and (max-width: 1360px) { }
+
+@media screen and (max-width: 1216px) {}
+
+@media screen and (max-width: 1200px) {
+	.site-logo{
+		width: 100%;
+	}
+	.site-logo .logo img {
+		display: block;
+		margin: auto;
+		width: auto;
+	}
+	ul.menu{
+		float: none;
+	}
+	.menu .leaf{
+		
+	}
+}
+
+@media screen and (max-width: 1024px) {}
+
+@media screen and (max-width: 1090px) {}
+
+@media screen and (max-width: 840px) {}
+
+@media screen and (max-width: 768px) {}
+
+@media screen and (max-width: 640px) {}
+
+@media screen and (max-width: 480px) {}
+
+@media screen and (max-width: 320px) {}
+
+@media only screen and (max-width:240px){
+
+}

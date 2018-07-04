@@ -1,0 +1,5 @@
+name = Graph general
+description = "Module for priorities general"
+package = Graph
+core = 7.x
+version = 1.0

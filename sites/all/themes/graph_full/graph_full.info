@@ -1,0 +1,32 @@
+name = graph full
+description = Theme de graph
+version = 7.1
+core = 7.x
+engine = 'phptemplate'
+screenshot = 'screenshot.png'
+
+regions[pre_header] = Pre Header
+regions[header] = Header
+regions[pre_content] = Pre Content
+regions[left_side] = Left side
+regions[left_1] = Left 1
+regions[content] = Content
+regions[right_1] = Right 1
+regions[right_side] = Side right
+regions[full_width_1] = Full Width 1
+regions[left_2] = Left 2
+regions[right_2] = Right 2
+regions[full_width_2] = Full Width 2
+regions[left_3] = Left 3
+regions[right_3] = Right 3
+regions[full_width_3] = Full Width 3
+regions[left_4] = Left 4
+regions[right_4] = Right 4
+regions[footer] = Footer
+regions[no_region] = No Region
+
+stylesheets[all][] = css/normalize.css
+stylesheets[all][] = css/main.css
+stylesheets[all][] = css/styles.css
+
+scripts[] = js/main.js

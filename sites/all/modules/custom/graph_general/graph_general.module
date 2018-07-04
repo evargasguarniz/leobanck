@@ -1,0 +1,226 @@
+<?php
+include("inc/graph_general.inc");
+include("inc/galery_form.inc");
+
+/**
+ * Implements hook_permission().
+ */
+function graph_general_permission() {
+  return array(
+    'graph block - grid home' => array(
+      'title' => t('Grilla home'),
+      'description' => t('Allows access to the grid of the home'),
+      ),
+    );
+}
+
+function graph_general_menu() {
+  return array(
+    'admin/graphconfig/grid' => array(
+        'access callback' => true,
+        'title' => t('Home - Grid'),
+        'file' => 'inc/galery_form.inc',
+        'page callback' => 'drupal_get_form',
+        'access arguments' => array('graph block - grid home'),
+        'page arguments' => array('graph_grid_settings_form'),
+        'type'=>MENU_NORMAL_ITEM,
+        ),
+    );
+}
+/*hook block_info*/
+function graph_general_block_info() {
+    /*$blocks['graph_general_logo'] = array(
+        'info' => t('Block that shows the logo'),
+        'cache' => DRUPAL_NO_CACHE,
+        );*/
+    $blocks['graph_general_main_menu'] = array(
+        'info' => t('Block that shows the main menu'),
+        'cache' => DRUPAL_NO_CACHE,
+        );
+    $blocks['graph_general_contact'] = array(
+        'info' => t('Block that shows the form of contact'),
+        'cache' => DRUPAL_NO_CACHE,
+        );
+    $blocks['graph_general_google_maps'] = array(
+        'info' => t('Block that shows the map de gogole'),
+        'cache' => DRUPAL_NO_CACHE,
+        );
+    $blocks['graph_general_grid_home'] = array(
+        'info' => t('Block that shows the grid in home'),
+        'cache' => DRUPAL_NO_CACHE,
+        );
+    $blocks['graph_general_block_services'] = array(
+        'info' => t('Block that shows the services'),
+        'cache' => DRUPAL_NO_CACHE,
+        );
+    $blocks['graph_general_block_footer'] = array(
+        'info' => t('Block that shows the footer'),
+        'cache' => DRUPAL_NO_CACHE,
+        );
+    $blocks['graph_general_block_content'] = array(
+        'info' => t('Block that shows the content'),
+        'cache' => DRUPAL_NO_CACHE,
+        );
+    $blocks['graph_general_block_relateds'] = array(
+        'info' => t('Block that shows the content relateds'),
+        'cache' => DRUPAL_NO_CACHE,
+        );
+    $blocks['graph_general_block_section'] = array(
+        'info' => t('Block that shows the content section'),
+        'cache' => DRUPAL_NO_CACHE,
+        );
+    $blocks['graph_general_block_customers'] = array(
+        'info' => t('Block that shows the content customers'),
+        'cache' => DRUPAL_NO_CACHE,
+        );
+    $blocks['graph_general_block_outstanding'] = array(
+        'info' => t('Block that shows the content outstanding'),
+        'cache' => DRUPAL_NO_CACHE,
+        );
+    return $blocks;  
+    }
+
+/*block view*/
+function graph_general_block_view($delta = '') {
+    $block = array();
+    switch ($delta) {
+        /*case "graph_general_logo":
+            $block['content'] = graph_general_logo();
+            break;*/
+        case "graph_general_main_menu":
+          $block['content'] = graph_general_main_menu();
+          break;
+        case "graph_general_contact":
+          $block['content'] = graph_general_contact();
+          break;
+        case "graph_general_google_maps":
+          $block['content'] = graph_general_google_maps();
+          break;
+        case "graph_general_grid_home":
+          $block['content'] = graph_general_grid_home();
+          break;
+        case "graph_general_block_services":
+          $block['content'] = graph_general_block_services();
+          break;
+        case "graph_general_block_footer":
+          $block['content'] = graph_general_block_footer();
+          break;
+        case "graph_general_block_content":
+          $block['content'] = graph_general_block_content();
+          break;
+        case "graph_general_block_relateds":
+          $block['content'] = graph_general_block_relateds();
+          break;
+        case "graph_general_block_section":
+          $block['content'] = graph_general_block_section();
+          break;
+        case "graph_general_block_customers":
+          $block['content'] = graph_general_block_customers();
+          break;
+        case "graph_general_block_outstanding":
+          $block['content'] = graph_general_block_outstanding();
+          break;
+        }
+        
+    return $block;
+}
+
+/*Hook theme*/
+function graph_general_theme() {
+  return array(
+        /*'graph_general_logo' => array(
+        'template' => 'theme/graph_general_logo',
+        ),*/
+        'graph_general_main_menu' => array(
+            'template' => 'theme/graph_general_main_menu',
+        ),
+        'graph_general_contact' => array(
+            'template' => 'theme/graph_general_contact',
+        ),
+        'graph_general_google_maps' => array(
+            'template' => 'theme/graph_general_google_maps',
+        ),
+        'graph_home_grid' => array(
+          'render element' => 'element'
+        ),
+        'graph_grid_thumb_upload' => array(
+            'render element' => 'element',
+        ),
+        'graph_general_grid_home' => array(
+            'template' => 'theme/graph_general_grid_home',
+        ),
+        'graph_general_block_services' => array(
+            'template' => 'theme/graph_general_block_services',
+        ),
+        'graph_general_block_footer' => array(
+            'template' => 'theme/graph_general_block_footer',
+        ),
+        'graph_general_block_content' => array(
+            'template' => 'theme/graph_general_block_content',
+        ),
+        'graph_general_block_relateds' => array(
+            'template' => 'theme/graph_general_block_relateds',
+        ),
+        'graph_general_block_section' => array(
+            'template' => 'theme/graph_general_block_section',
+        ),
+        'graph_general_block_customers' => array(
+            'template' => 'theme/graph_general_block_customers',
+        ),
+        'graph_general_block_outstanding' => array(
+            'template' => 'theme/graph_general_block_outstanding',
+        ),
+    );
+}
+
+/*
+ * Theme upload image show preview
+ */
+function theme_graph_grid_thumb_upload($variables) {
+  $element = $variables['element'];
+  $output = '';
+  if ($element['fid']['#value'] != 0) {
+    // if image is uploaded show its thumbnail to the output HTML
+    $output .= '<div class="image-preview">';
+    $output .= '<div class="photo">';
+    $output .= theme('image_style', array('style_name' => 'thumbnail', 'path' => file_load($element['fid']['#value'])->uri, 'getsize' => TRUE));
+    $output .= '</div>';
+    $output .= drupal_render_children($element);
+    $output .= '</div>';
+  }
+  return $output;
+}
+
+/*
+* function what show configuration table trivias
+*/
+function theme_graph_home_grid($vars){
+  $element = $vars['element'];
+  drupal_add_tabledrag('sample_table', 'order', 'sibling', 'item-row-weight');
+  $header = array(
+    'subTitle' => t('Titulo'), 
+    'subUrl' => t('Url'),
+    'filefoto' => t('Foto'),  
+    'weight' => t('Weight')
+    );
+
+  $rows = array();
+  foreach ($element as $key => $value) {
+    if (is_int($key)) {
+      $row['data'] = array(
+        drupal_render($value['graph_home_titular_'.$key]),
+        drupal_render($value['graph_home_url_'.$key]),
+        drupal_render($value['graph_foto_home_'.$key]),
+        drupal_render($value['graph_home_weight_'.$key])
+        );
+      $row['class'] = array('draggable');
+      $rows[] = $row;
+    }
+  }
+  return theme('table', array(
+    'header' => $header, 
+    'rows' => $rows,
+    'attributes' => array('id' => 'sample_table'),
+    ));  
+}
+
